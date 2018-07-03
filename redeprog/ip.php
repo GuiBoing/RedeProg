@@ -1,18 +1,92 @@
 <?php
 
- $sttrinca = $_GET['1trinca'];
- $ndtrinca = $_GET['2trinca'];
- $rdtrinca = $_GET['3trinca'];
- $thtrinca = $_GET['4trinca'];
+//<h1></h1>
+
+ $sttrinca = $_GET['sttrinca'];
+ $ndtrinca = $_GET['ndtrinca'];
+ $rdtrinca = $_GET['rdtrinca'];
+ $thtrinca = $_GET['thtrinca'];
  $masc    = $_GET['masc'];
- 
- echo $sttrinca;
- echo "<hr>";
- echo $ndtrinca;
- echo "<hr>";
- echo $rdtrinca;
- echo "<hr>";
- echo $thtrinca;
- echo "<hr>";
+
+echo "<h1>Ip digitado foi: ";
+ echo $sttrinca.".";
+
+ echo $ndtrinca.".";
+
+ echo $rdtrinca.".";
+
+ echo $thtrinca."/";
+
  echo $masc;
- echo "<hr>";
+
+ echo "</h1>";
+
+
+echo "<h1>mascara integral</h1>";
+
+
+
+echo "<h1>total de endereços</h1>";
+$sobramasc= 32-$masc;
+$endereco=pow(2,$sobramasc);
+echo $endereco;
+
+
+
+echo "<h1>total de possiveis host(s)</h1>";
+$usehost=$endereco - 2;
+echo $usehost;
+
+
+
+echo "<h1>total sub redes</h1>";
+$totalrange = 256/$endereco;
+echo $totalrange;
+
+
+//classifição
+echo "<h1>classifição</h1>";
+if(($sttrinca == '10')
+ or ($sttrinca=='127')
+  or ($sttrinca=='172' and $ndtrinca>='16' and $ndtrinca<='32')
+  or ($sttrinca == '192' and $ndtrinca == '168')
+){
+  echo "<h4>reservado ";
+}else{
+  echo "<h4>Liberado ";
+};
+
+
+if( $sttrinca>='0' and $sttrinca<='127'
+and $ndtrinca>='0' and $ndtrinca<='255'
+and $thtrinca>='0' and $thtrinca<='255'
+and $rdtrinca>='0' and $rdtrinca<='255'
+){
+   echo "da classe A </h4>";
+ }elseif( $sttrinca>='128' and $sttrinca<='191'
+      and $ndtrinca>='0' and $ndtrinca<='255'
+      and $thtrinca>='0' and $thtrinca<='255'
+      and $rdtrinca>='0' and $rdtrinca<='255'
+ ){
+   echo "da classe B </h4>";
+ }elseif ( $sttrinca>='192' and $sttrinca<='223'
+       and $ndtrinca>='0' and $ndtrinca<='255'
+       and $thtrinca>='0' and $thtrinca<='255'
+       and $rdtrinca>='0' and $rdtrinca<='255'
+ ){
+   echo "da classe C </h4>";
+ }elseif ( $sttrinca>='224' and $sttrinca<='239'
+       and $ndtrinca>='0' and $ndtrinca<='255'
+       and $thtrinca>='0' and $thtrinca<='255'
+       and $rdtrinca>='0' and $rdtrinca<='255'
+ ){
+   echo "da classe D </h4>";
+ }elseif ( $sttrinca>='240' and $sttrinca<='255'
+       and $ndtrinca>='0' and $ndtrinca<='255'
+       and $thtrinca>='0' and $thtrinca<='255'
+       and $rdtrinca>='0' and $rdtrinca<='255'
+ ){
+   echo "classe E";
+ }else{
+   echo "numero invalido";
+ }
