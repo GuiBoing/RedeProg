@@ -1,6 +1,6 @@
 <?php
 
-//<h1></h1>
+//echo "<h1></h1>";
 
  $sttrinca = $_GET['sttrinca'];
  $ndtrinca = $_GET['ndtrinca'];
@@ -23,12 +23,20 @@ echo "<h1>Ip digitado foi: ";
 
 
 echo "<h1>mascara integral</h1>";
-
-
-
 echo "<h1>total de endereços</h1>";
 $sobramasc= 32-$masc;
 $endereco=pow(2,$sobramasc);
+echo $endereco;
+
+
+
+echo "<h1>Rede da conexão</h1>";
+echo "0";
+
+
+
+
+echo "<h1>broadcast da conexão</h1>";
 echo $endereco;
 
 
@@ -39,9 +47,17 @@ echo $usehost;
 
 
 
+
+
 echo "<h1>total sub redes</h1>";
 $totalrange = 256/$endereco;
 echo $totalrange;
+
+echo "<h1>Esta localizado na Sub rede:</h1>";
+
+//verifica a ultima trinca pra ver onde dos ranges q ele tá 
+$sublocal = $thtrinca;
+echo $sublocal;
 
 
 //classifição
@@ -51,9 +67,9 @@ if(($sttrinca == '10')
   or ($sttrinca=='172' and $ndtrinca>='16' and $ndtrinca<='32')
   or ($sttrinca == '192' and $ndtrinca == '168')
 ){
-  echo "<h4>reservado ";
+  echo "<h4>reservado e ";
 }else{
-  echo "<h4>Liberado ";
+  echo "<h4>Liberado para uso e ";
 };
 
 
